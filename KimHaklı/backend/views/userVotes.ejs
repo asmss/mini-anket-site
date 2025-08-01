@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Oy Verdiğim Anketler</title>
+  <link rel="stylesheet" href="/css/userVotes.css">
+</head>
+<body>
+  <h1>Oy Verdiğim Anketler</h1>
+
+  <% if (votes.length === 0) { %>
+    <p>Henüz oy verdiğiniz anket yok.</p>
+  <% } else { %>
+    <ul>
+      <% votes.forEach(vote => { %>
+        <li>
+          <strong><a href="/poll/<%= vote.anketid %>"><%= vote.anket_title %></a></strong> Seçtiğiniz seçenek: <em><%= vote.anket_options[vote.optionIndex] %></em>
+          <form action="/user/votes/remove/<%= vote.voteId %>" method="POST" style="display:inline;">
+            <button type="submit" onclick="return confirm('Oyunu geri almak istediğine emin misin?');">Oyunu Geri Al</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <br />
+  <a href="/">Anasayfaya Dön</a>
+</body>
+</html>

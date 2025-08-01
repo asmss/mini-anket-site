@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol | KimHaklı</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="logo">KimHaklı</a>
+        <h1>Hesap Oluştur</h1>
+        
+        <% if(error){ %>
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                <span><%= error %></span>
+            </div>
+        <% } %>
+        
+        <form action="/auth/register" method="POST">
+            <div class="form-group">
+                <label for="name">Kullanıcı adı</label>
+                <input type="text" id="name" name="name" required placeholder="Adınızı girin">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Şifre</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required placeholder="Şifrenizi oluşturun">
+                    <i class="far fa-eye toggle-password" id="togglePassword"></i>
+                </div>
+            </div>
+            
+            <button type="submit">KAYIT OL</button>
+        </form>
+        
+                
+        <p class="login-link">Hesabın var mı? <a href="/auth/login">Giriş yap</a></p>
+    </div>
+
+    <script>
+        // Şifre göster/gizle fonksiyonu
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        
+        togglePassword.addEventListener('click', function() {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+    </script>
+</body>
+</html>

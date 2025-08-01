@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANA SAYFA - KimHaklı</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header> 
+   <div class="baslık">KimHaklı</div>
+    <nav class="baslik-nav">
+    <% if(userName) {%>
+       <div class="center-seçenekler">
+         <a href="/admin/anketler"><i class="fas fa-cog"></i> Admin</a>
+         <a href="/user/votes"><i class="fas fa-poll"></i> Anketlerim</a> 
+         <button type="button" id="oluştur"><i class="fas fa-plus"></i> Anket oluştur</button>
+         <button type="button" class="btn-çıkış btn-primary" id="logout"><i class="fas fa-sign-out-alt"></i> ÇIKIŞ YAP</button>
+        </div>
+      <%} else{ %>  
+       <div class="right-seçenekler">
+         <button type="button" class="btn-giriş btn-primary" id="login"><i class="fas fa-sign-in-alt"></i> GİRİŞ YAP</button>
+         <button type="button" class="btn-kayıt btn-primary" id="register"><i class="fas fa-user-plus"></i> KAYIT OL</button>
+        </div>
+         <% } %>
+    </nav>
+</header>
+<section>
+     <% if(userName) {%>
+         <div class="section-kullanici">
+            <h3>HOŞGELDİN <%= userName %> !</h3>
+          <form action="/search" method="GET" class="search-container">
+    <input type="text" name="category" id="searchInput" placeholder="Anket ara...  (kategori bilgisi girin lütfen)" required>
+    <button type="submit" id="searchBtn" class="btn-primary"><i class="fas fa-search"></i></button>
+</form>
+        </div>
+        <div class="section-anketler">
+           <h4>AKTİF ANKETLER</h4> 
+            <div class="anket-list">
+           <% if(anketler && anketler.length>0){ %>
+            <% anketler.forEach(function(anket){ %>
+                <div class="anket-card">
+                    <h3><%= anket.title %></h3>
+                    <h5><%= anket.category %></h5>                    
+                    <p><%= anket.description || "Bu anket hakkında bir açıklama bulunmuyor." %></p>
+                    <div class="anket-meta">
+                        <span><i class="far fa-user"></i> <%= anket.creator %></span>
+                        <span><i class="far fa-calendar-alt"></i> <%= anket.createdAt %></span>
+                    </div>
+                   <button type="button" class="btn-geçiş btn-primary" onclick="window.location.href='/anket/<%= anket.id%>'">anket detayları</button>
+                </div>
+                <% }) %>
+            <% }else{ %>
+                <div class="no-anket">
+                    <i class="far fa-folder-open fa-3x" style="color: #ccc; margin-bottom: 1rem;"></i>
+                    <p>Henüz anket oluşturulmadı.</p>
+                </div>
+                <% } %>
+            </div>
+        </div>
+       <% }else{ %> 
+       <div class="hero">
+            <h1>Fikirlerin Önemli!</h1>
+            <p>KimHaklı ile kolayca anketler oluşturun, insanların düşüncelerini öğrenin ve topluluk kararlarını şekillendirin.</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Hızlı ve Kolay</h3>
+                <p>Birkaç tıklamayla anket oluşturun ve anında paylaşın.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3>Detaylı Analiz</h3>
+                <p>Anket sonuçlarınızı grafiklerle görüntüleyin ve analiz edin.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Topluluk</h3>
+                <p>Kullanıcının katıldığı anketlere göz atın.</p>
+            </div>
+        </div>
+        <div class="faq-section">
+    <h2>Önemli Sorular</h2>
+    <details>
+        <summary>Kimler anket oluşturabilir?</summary>
+        <p>Kayıtlı olan tüm kullanıcılar anket oluşturabilir.</p>
+    </details>
+    <details>
+        <summary>Oylar gizli mi?</summary>
+        <p>Tüm oylar anonimdir. Kimlik bilgileri toplanmaz.</p>
+    </details>
+</div>
+
+        <% } %>
+</section>
+
+<footer>
+    <p>© 2025 KimHaklı</p>
+    <p>iletişim: asimkarblt07777@gmail.com</p>
+</footer>
+
+<script>
+    
+   document.addEventListener("DOMContentLoaded", () => {
+        const loginBtn = document.getElementById("login") || document.getElementById("login2");
+        const registerBtn = document.getElementById("register") || document.getElementById("register2");
+        const logoutBtn = document.getElementById("logout");
+        const anketoluştur = document.getElementById("oluştur") || document.getElementById("oluştur2");
+        if (loginBtn) {
+            loginBtn.addEventListener("click", () => {
+                window.location.href = "/auth/login";
+            });
+        }
+         if(anketoluştur){
+            anketoluştur.addEventListener("click", () => {
+                window.location.href="/anket/create";
+                  
+            })
+         }
+        if (registerBtn) {
+            registerBtn.addEventListener("click", () => {
+                window.location.href = "/auth/register";
+            });
+        }
+
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", () => {
+                alert("Çıkış yapılıyor...");
+                window.location.href = "/auth/logout";
+            });
+        }
+    });
+document.getElementById("searchBtn").addEventListener("click", async (e) => {
+    e.preventDefault(); // Formun varsayılan submitini engelle
+    const kategori = document.getElementById("searchInput").value.trim().toLowerCase();
+    let url = "/api/search";
+
+    if (kategori) {
+        url += `?category=${encodeURIComponent(kategori)}`;
+    }
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const container = document.querySelector(".anket-list");
+    container.innerHTML = "";
+
+    if (!data || data.length === 0) {
+        container.innerHTML = `<div class="no-anket">
+            <i class="far fa-folder-open fa-3x" style="color: #ccc; margin-bottom: 1rem;"></i>
+            <p>Uygun anket bulunamadı.</p>
+        </div>`;
+        return;
+    }
+
+    data.forEach(anket => {
+        container.innerHTML += `
+            <div class="anket-card">
+                <h3>${anket.title}</h3>
+                <h5>${anket.category}</h5>
+                <p>${anket.description || "Bu anket hakkında bir açıklama yok."}</p>
+                <div class="anket-meta">
+                    <span><i class="far fa-user"></i> ${anket.creator}</span>
+                    <span><i class="far fa-calendar-alt"></i> ${anket.createdAt}</span>
+                </div>
+                <button type="button" class="btn-geçiş btn-primary" onclick="window.location.href='/anket/${anket.id}'">anket detayları</button>
+            </div>
+        `;
+    });
+});
+</script>
+
+</script>
+</body>
+</html>

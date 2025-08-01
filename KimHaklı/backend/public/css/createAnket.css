@@ -1,0 +1,149 @@
+:root {
+    --primary-color: #12307c;       
+    --secondary-color: #bfdbfe;     
+    --accent-color: #2563eb;        
+    --dark-color: #0f276a;          
+    --light-color: #dbeafe;         
+    --text-color: #0f172a;          
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(18, 48, 124, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, var(--secondary-color), var(--light-color));
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1 {
+  margin-top: 20px;
+  color: var(--accent-color);
+  text-align: center;
+  font-size: 2rem;
+}
+
+form {
+  background-color: var(--light-color);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#sağ,
+#sol {
+  flex: 1 1 45%;
+  min-width: 250px;
+}
+
+#alt {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+  color: var(--text-color);
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px;
+  border: 1px solid #93c5fd; 
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.4);
+}
+
+button:hover {
+  background-color: var(--primary-color);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.3s;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+p {
+  color: #dc2626; 
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  #sağ,
+  #sol {
+    flex: 1 1 100%;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  button {
+    padding: 10px;
+  }
+}

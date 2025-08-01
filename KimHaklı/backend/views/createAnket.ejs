@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anket Oluştur</title>
+    <link rel="stylesheet" href="/css/createAnket.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ANKET OLUŞTUR</h1>
+    <% if(error){ %>
+      <p><%= error %></p>
+    <% } %>
+
+    <form action="/anket/create" method="POST">
+      <div id="sağ">
+        <label>Oluşturucu İsmi:
+          <input type="text" name="creator" required>
+        </label>
+
+        <label>Anket Başlığı:
+          <input type="text" name="title" required>
+        </label>
+
+        <label>Anket Açıklaması:
+          <input type="text" name="description" required>
+        </label>
+      </div>
+
+      <div id="sol">
+        <label>Seçenekler: (Her satıra bir seçenek yazın, en az 2 en fazla 15)
+          <textarea name="options" required></textarea>
+        </label>
+
+        <label>Kategori Seç:
+          <select name="category" required>
+            <option value="">Kategori Seçin</option>
+            <option value="teknoloji">Teknoloji</option>
+            <option value="spor">Spor</option>
+            <option value="siyaset">Siyaset</option>
+            <option value="global">Global</option>
+            <option value="doğal">Doğal</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="alt">
+        <button type="submit">ANKET OLUŞTUR</button>
+        <a href="/">ANA SAYFAYA DÖN →</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+   <link rel="stylesheet" href="/css/adminAnketler.css">
+</head>
+<body>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/'">Ana sayfaya dön</button>
+  <ul>
+    <% if (anketler.length === 0) { %>
+      <li>Henüz anket yok.</li>
+    <% } else { %>
+      <% anketler.forEach(anket => { %>
+        <li>
+          <strong><%= anket.title %></strong> 
+          <form action="/admin/anketler/delete/<%= anket.id %>" method="POST" style="display:inline;">
+            <button onclick="return confirm('Anketi silmek istediğine emin misin?');" type="submit">Sil</button>
+          </form>
+        </li>
+      <% }) %>
+    <% } %>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,321 @@
+:root {
+    --primary-color: #12307c;       
+    --secondary-color: #bfdbfe;     
+    --accent-color: #2563eb;        
+    --dark-color: #0f276a;          
+    --light-color: #dbeafe;         
+    --text-color: #0f172a;          
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(18, 48, 124, 0.25); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--light-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--light-color);
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.baslık {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.baslik-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.center-seçenekler, .right-seçenekler {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.baslik-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.baslik-nav a:hover {
+    color: var(--primary-color);
+}
+
+button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0f276a;
+    transform: translateY(-2px);
+}
+
+.oluştur {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.oluştur:hover {
+    background-color: #1e40af;
+    transform: translateY(-2px);
+}
+
+.btn-çıkış {
+    background-color: var(--dark-color);
+}
+
+.btn-çıkış:hover {
+    background-color: #0b1e52;
+}
+
+section {
+    padding: 2rem;
+    min-height: calc(100vh - 150px);
+}
+
+.section-kullanici {
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.section-kullanici h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.search-container {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    font-size: 1rem;
+}
+
+.search-container button {
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    padding: 0 1.5rem;
+}
+
+.section-anketler {
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.section-anketler h4 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.anket-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.anket-card {
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid var(--primary-color);
+}
+
+.anket-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(18, 48, 124, 0.1);
+}
+
+.anket-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.anket-card p {
+    color: #374151; 
+    margin-bottom: 1rem;
+}
+
+.anket-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.no-anket {
+    text-align: center;
+    padding: 2rem;
+    color: #4b5563;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), #2563eb);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background-color: var(--light-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+   header {
+        display: flex;
+        flex-direction: column;
+   }
+    .baslik-nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .center-seçenekler {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .right-seçenekler {
+        width: 100%;
+        justify-content: center;
+    }
+    .anket-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.faq-section {
+    background-color: var(--light-color);
+    padding: 2rem;
+    margin-top: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faq-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.faq-section details {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.faq-section summary {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.faq-section p {
+    color: #555;
+    margin-top: 0.5rem;
+}
