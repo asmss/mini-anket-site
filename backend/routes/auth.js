@@ -51,7 +51,7 @@ router.post("/login",async(req,res)=>{
  const snapshot = await users.where("name","==",name).get();
  if(snapshot.empty)
  {
-    res.render("login",{error:"kullanici bulunamadı"})
+   return res.render("login",{error:"kullanici bulunamadı"})
  }
 
   let user_bilgisi;
