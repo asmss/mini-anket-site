@@ -60,7 +60,7 @@ router.post("/login",async(req,res)=>{
    const  şifre_kontrol = await bcrypt.compare(password,user_bilgisi.data().password)
   
    if(!şifre_kontrol){
-    return res.render("login",{error:"şifren yanlış hocam"})
+    return res.render("login",{error:"şifren yanlış"})
    }
 
    //oturumu başlattım burda
